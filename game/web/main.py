@@ -8,6 +8,6 @@ class MyApp(App):
     def build(self):
         return Label(text='')
     
+    
 if __name__ == '__main__':
     MyApp().run()
-
