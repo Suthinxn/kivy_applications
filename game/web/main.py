@@ -13,7 +13,7 @@ class GameWidget(Widget):
         self._keyboard.bind(on_key_down = self._on_key_down)
 
         with self.canvas:
-            Rectangle(
+            self.dino = Rectangle(
                 source = 'image/dinosaur.gif',
                 pos = (0, 0),
                 size = (228/2, 228/2)
@@ -25,7 +25,19 @@ class GameWidget(Widget):
     def _on_key_down(self, keyboard, keycode, text, modifiers):
         print('key down', text)
 
-    
+        cur_x = self.dino.pos[0]
+        cur_y = self.dino.pos[1]
+
+        if text == 'w':
+            cur_y += 1
+        elif text == 'd':
+            cur_x += 1
+        elif text == 's':
+            cur_y -= 1
+        elif text == 'a':
+            cur_x -= 1
+
+        self.dino.pos = (cur_x, cur_y)
 
 class MyApp(App):
     def build(self):
