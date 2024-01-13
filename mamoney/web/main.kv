@@ -1,6 +1,7 @@
 WindowManager:
     Mamoney_app:
     Register_user:
+    Login_user:
 
 
 <Mamoney_app>:
@@ -25,7 +26,8 @@ WindowManager:
             Button: 
                 text: "Login"
                 font_size: "30sp"
-                # on_press:
+                on_release: app.root.current = "login"
+                
             Button: 
                 text: "Register"
                 font_size: "30sp"
@@ -78,4 +80,52 @@ WindowManager:
         Button:
             text: "Summit"
             font_size: "30sp"
-            on_release: app.root.current = "mamoney"
+            on_release: app.root.current = "login"
+
+<Login_user>:
+    name: "login"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Login"
+            font_size: "50sp"
+
+        BoxLayout:
+            padding: [10, 10, 10, 10] 
+            Label:
+                text: "User name"
+                font_size: 15
+                size_hint: (0.2,0.4)
+            TextInput:
+                hint_text: "username"
+                multiline: False
+                font_size: 20
+                size_hint: (0.8,0.4)
+        
+        BoxLayout:
+            padding: [10, 10, 10, 10] 
+            Label:
+                text: "Password"
+                font_size: 15
+                size_hint: (0.2,0.4)
+            TextInput:
+                hint_text: "password"
+                multiline: False
+                font_size: 20
+                size_hint: (0.8,0.4)
+
+        BoxLayout:
+            padding: [10, 10, 10, 10] 
+            Label:
+                text: "Confirm Password"
+                font_size: 15
+                size_hint: (0.2,0.4)
+            TextInput:
+                hint_text: "password"
+                multiline: False
+                font_size: 20
+                size_hint: (0.8,0.4)
+        Button:
+            text: "Summit"
+            font_size: "30sp"
+            on_release: app.root.current = "login"
