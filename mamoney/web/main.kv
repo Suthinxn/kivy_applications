@@ -1,14 +1,81 @@
+WindowManager:
+    Mamoney_app:
+    Register_user:
+
+
 <Mamoney_app>:
-    orientation: 'vertical'
-    padding: [10, 10, 10, 10] 
-    Label:
-        text: "MaMoney"
-        font_size: "40sp"
-    Label:
-        id: greeting
-        text: "Hi"
-        font_size: "40sp"
-    Button:
-        text: "Click Here"
-        font_size: "30sp"
-        on_press: root.random_greeting()
+    name: "mamoney"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10, 10, 10]
+        Label:
+            text: "MaMoney"
+            font_size: "50sp"
+        Label:
+            id: greeting
+            text: "Hello"
+            font_size: "40sp"
+        Button:
+            text: "Click Here!"
+            font_size: "30sp"
+            on_press: root.random_greeting()
+
+        BoxLayout:
+            padding: [0, 10, 0, 0]
+            Button: 
+                text: "Login"
+                font_size: "30sp"
+                # on_press:
+            Button: 
+                text: "Register"
+                font_size: "30sp"
+                on_release: app.root.current = "register"
+
+<Register_user>:
+    name: "register"
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Register"
+            font_size: "50sp"
+
+        BoxLayout:
+            padding: [10, 10, 10, 10] 
+            Label:
+                text: "User name"
+                font_size: 15
+                size_hint: (0.2,0.4)
+            TextInput:
+                hint_text: "username"
+                multiline: False
+                font_size: 20
+                size_hint: (0.8,0.4)
+        
+        BoxLayout:
+            padding: [10, 10, 10, 10] 
+            Label:
+                text: "Password"
+                font_size: 15
+                size_hint: (0.2,0.4)
+            TextInput:
+                hint_text: "password"
+                multiline: False
+                font_size: 20
+                size_hint: (0.8,0.4)
+
+        BoxLayout:
+            padding: [10, 10, 10, 10] 
+            Label:
+                text: "Confirm Password"
+                font_size: 15
+                size_hint: (0.2,0.4)
+            TextInput:
+                hint_text: "password"
+                multiline: False
+                font_size: 20
+                size_hint: (0.8,0.4)
+        Button:
+            text: "Summit"
+            font_size: "30sp"
+            on_release: app.root.current = "mamoney"
