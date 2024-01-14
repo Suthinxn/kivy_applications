@@ -86,21 +86,26 @@ class Login_user(Screen):
                 print("Invalid Password.")
 
 
-class Save_money(Screen):
-    pass
 
 class Homepage(Screen):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.today = date.today()
-    def display_homepage(self, button_date):
-        self.ids.button_date.text = f"{self.today}"
-    
+    pass
+
+sum_in = 0
+sum_ex = 0
+
 class Income_expense(Screen):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-    pass
+    
+    def sum_income(self, input_income):
+        global sum_in
+        sum_in += int(input_income)
+        self.ids.display_income.text = str(sum_in)
 
+    def sum_expense(self, input_expense):
+        global sum_ex
+        sum_ex += int(input_expense)
+        self.ids.display_expense.text = str(sum_ex)
 
 kv = Builder.load_file("main.kv")
 
