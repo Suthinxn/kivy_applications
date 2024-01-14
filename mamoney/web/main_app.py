@@ -33,7 +33,7 @@ class Register_user(Screen):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.list_username = ["Den"]
-        self.list_password = []
+        self.list_password = ["123456789"]
     
     def check_infomation(self, username, password, confirm_password):
 
@@ -52,6 +52,11 @@ class Register_user(Screen):
         if username not in self.list_username:
             self.ids.topic.text = "Complete"
             print("Complete")
+            self.list_username.append(username)
+            self.list_password.append(password)
+            print(self.list_username)
+            print(self.list_password)
+
 class Login_user(Screen):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
