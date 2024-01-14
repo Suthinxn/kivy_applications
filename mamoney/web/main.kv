@@ -88,6 +88,7 @@ WindowManager:
             Button: 
                 text: "Check infomation"
                 font_size: "30sp"
+                disabled: True if topic.text == "Complete" else False
                 on_press: root.check_infomation(username.text, password.text, confirm_password.text)
 
             Button: 
@@ -104,6 +105,10 @@ WindowManager:
         Label:
             text: "Login"
             font_size: "50sp"
+        Label:
+            id: topic_login
+            text: "Please fill in the form below"
+            font_size: "30sp"        
 
         BoxLayout:
             padding: [10, 10, 10, 10] 
@@ -112,6 +117,7 @@ WindowManager:
                 font_size: 15
                 size_hint: (0.2,0.4)
             TextInput:
+                id: username_login
                 hint_text: "username"
                 multiline: False
                 font_size: 20
@@ -124,23 +130,23 @@ WindowManager:
                 font_size: 15
                 size_hint: (0.2,0.4)
             TextInput:
+                id: password_login
                 hint_text: "password"
                 multiline: False
                 font_size: 20
                 size_hint: (0.8,0.4)
 
         BoxLayout:
-            padding: [10, 10, 10, 10] 
-            Label:
-                text: "Confirm Password"
-                font_size: 15
-                size_hint: (0.2,0.4)
-            TextInput:
-                hint_text: "password"
-                multiline: False
-                font_size: 20
-                size_hint: (0.8,0.4)
-        Button:
-            text: "Summit"
-            font_size: "30sp"
-            on_release: app.root.current = "login"
+            # orientation: 'vertical'
+            Button: 
+                text: "Check infomation"
+                font_size: "30sp"
+                disabled: True if topic_login.text == "Login Succes" else False
+                on_press: root.check_login(username_login.text, password_login.text)
+
+            Button: 
+                id: summit 
+                text: "Summit"
+                font_size: "30sp"
+                disabled:  False if topic_login.text=="Login Succes" else True
+                on_release: app.root.current = "login"
