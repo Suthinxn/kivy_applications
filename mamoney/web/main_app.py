@@ -61,16 +61,28 @@ class Register_user(Screen):
                     print(self.list_username)
                     print(self.list_password)
 
-    def check_login(self):
-        pass
-
+    def database_usernaem(self):
+        return self.list_username 
+    def database_password(self):
+        return self.list_password
 class Login_user(Screen):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.class_register = Register_user()
-        
-        self.class_register.check_login()
-        pass
+        self.list_username_login = self.class_register.database_usernaem()
+        self.list_password_login = self.class_register.database_password()
+
+    def check_login(self, username_login, password_login):
+        if username_login in self.list_username_login:
+            index_user = self.list_username_login.index(username_login)
+            if password_login == self.list_password_login[index_user]:
+                self.ids.topic_login.text = "Login Succes"
+                print("Login Succes")
+            else:
+                self.ids.topic_login.text = "Invalid Password."
+                print("Tnvalid Password.")
+        print(self.list_username_login)
+        print(self.list_password_login)
 
 kv = Builder.load_file("main.kv")
 
