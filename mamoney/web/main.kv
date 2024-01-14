@@ -2,7 +2,9 @@ WindowManager:
     Mamoney_app:
     Register_user:
     Login_user:
-
+    Homepage:
+    Income_expense:
+    Save_money:
 
 <Mamoney_app>:
     name: "mamoney"
@@ -48,28 +50,32 @@ WindowManager:
         BoxLayout:
             padding: [10, 10, 10, 10] 
             Label:
+                # padding: [10, 10, 10, 10]
                 text: "User name"
                 font_size: 15
-                size_hint: (0.2,0.4)
+                size_hint: (0.2,0.5)
             TextInput:
                 id: username
                 hint_text: "username"
                 multiline: False
+                halign: "left"
                 font_size: 20
-                size_hint: (0.8,0.4)
+                size_hint: (0.8,0.5)
         
         BoxLayout:
-            padding: [10, 10, 10, 10] 
+            padding: [10, 10, 10, 10]
             Label:
                 text: "Password"
                 font_size: 15
-                size_hint: (0.2,0.4)
+                size_hint: (0.2,0.5)
             TextInput:
                 id: password
                 hint_text: "password"
+                halign: "left"
                 multiline: False
                 font_size: 20
-                size_hint: (0.8,0.4)
+                size_hint: (0.8,0.5)
+                pos_hint: {'up': 4}
         BoxLayout:
             padding: [10, 10, 10, 10] 
             Label:
@@ -80,6 +86,7 @@ WindowManager:
                 id: confirm_password
                 hint_text: "password"
                 multiline: False
+                halign: "left"
                 font_size: 20
                 size_hint: (0.8,0.4)
 
@@ -149,4 +156,94 @@ WindowManager:
                 text: "Summit"
                 font_size: "30sp"
                 disabled:  False if topic_login.text=="Login Succes" else True
-                on_release: app.root.current = "login"
+                on_release: app.root.current = "homepage"
+
+<Homepage>:
+    name: "homepage"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10, 10, 10]
+    
+        Label:
+            text: "MaMoney"
+            font_size: "60sp"
+
+        BoxLayout:
+            Button:
+                text: "Income and Expense"
+                font_size: "20sp"
+                on_release: app.root.current = "incom_expense"             
+            # Button: 
+            #     text: "Save_money"
+            #     font_size: "20sp"
+        Button:
+            text: "Log out"
+            font_size: "30sp"
+            on_release: app.root.current = "mamoney"
+
+<Income_expense>:
+    name: "incom_expense"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10, 10, 10]
+
+        BoxLayout:
+     
+            Label:
+                text: "Income"
+                font_size: "30sp"
+
+            Label:
+                text: "Expense"
+                font_size: "30sp"
+        BoxLayout:
+            padding: [10, 10, 10, 10] 
+            BoxLayout:
+                TextInput:
+                    id: input_income
+                    hint_text: "Bath"
+                    multiline: False
+                    halign: "center"
+                    font_size: 20
+                    size_hint: (0.8,1)
+                Button:
+                    id: income_button
+                    text: "Summit"
+                    font_size: 15
+                    size_hint: (0.2,1)
+            BoxLayout:
+                TextInput:
+                    id: input_expense
+                    hint_text: "Bath"
+                    multiline: False
+                    halign: "center"
+                    font_size: 20
+                    size_hint: (0.8,1)
+                Button:
+                    id: expense_button
+                    text: "Summit"
+                    font_size: 15
+                    size_hint: (0.2,1)
+        
+        BoxLayout:
+            # orientation: 'vertical'
+            BoxLayout:
+                Label:
+                    id: display_income
+                    text: "Income"
+                    font_size: "20sp"
+            
+                Label:
+                    id: display_expense
+                    text: "Expense"
+                    font_size: "20sp"        
+        Button:
+            id: exit
+            text: "Exit"
+            font_size: "20sp"
+            on_release: app.root.current = "homepage"
+
+
+        
+
+                
