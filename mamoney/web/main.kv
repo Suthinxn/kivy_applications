@@ -173,9 +173,11 @@ WindowManager:
                 text: "Income and Expense"
                 font_size: "20sp"
                 on_release: app.root.current = "incom_expense"             
-            # Button: 
-            #     text: "Save_money"
-            #     font_size: "20sp"
+            Button:
+                text: "Save_money"
+                font_size: "20sp"
+                on_release: app.root.current = "save_money"
+
         Button:
             text: "Log out"
             font_size: "30sp"
@@ -205,12 +207,13 @@ WindowManager:
                     multiline: False
                     halign: "center"
                     font_size: 20
-                    size_hint: (0.8,1)
+                    size_hint: (0.6,1)
                 Button:
                     id: income_button
                     text: "Summit"
                     font_size: 15
-                    size_hint: (0.2,1)
+                    size_hint: (0.4,1)
+                    on_press: root.sum_income(input_income.text)
             BoxLayout:
                 TextInput:
                     id: input_expense
@@ -218,32 +221,75 @@ WindowManager:
                     multiline: False
                     halign: "center"
                     font_size: 20
-                    size_hint: (0.8,1)
+                    size_hint: (0.6,1)
                 Button:
                     id: expense_button
                     text: "Summit"
                     font_size: 15
-                    size_hint: (0.2,1)
+                    size_hint: (0.4,1)
+                    on_press: root.sum_expense(input_expense.text)
         
         BoxLayout:
             # orientation: 'vertical'
             BoxLayout:
                 Label:
                     id: display_income
-                    text: "Income"
-                    font_size: "20sp"
+                    text: "0"
+                    font_size: "50sp"
             
                 Label:
                     id: display_expense
-                    text: "Expense"
-                    font_size: "20sp"        
+                    text: "0"
+                    font_size: "50sp"        
         Button:
             id: exit
             text: "Exit"
             font_size: "20sp"
             on_release: app.root.current = "homepage"
 
-
+<Save_money>:
+    name: "save_money"
+    padding: [10, 10, 10, 10] 
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Save_money"
+            font_size: "30sp"
+        BoxLayout:
+            TextInput:
+                id: input_goal
+                hint_text: "Goal"
+                multiline: False
+                halign: "center"
+                font_size: 20
+                # size_hint: (0.6,1)
+            Button:
+                id: income_button
+                text: "Summit"
+                font_size: 15
+                # size_hint: (0.4,1)
+                on_press: root.avg_savemoney(input_goal.text)
+            TextInput:
+                id: input_money
+                hint_text: "savemoney"
+                multiline: False
+                halign: "center"
+                font_size: 20
+                # size_hint: (0.6,1)
+            Button:
+                id: income_savemoney
+                text: "Summit"
+                font_size: 15
+                # size_hint: (0.4,1)
+                on_press: root.sum_savemoney(input_money.text)      
         
-
-                
+        Label:
+            id: display_save
+            text: "0"
+            font_size: "50sp"
+    
+        Button:
+            id: exit
+            text: "Exit"
+            font_size: "20sp"
+            on_release: app.root.current = "homepage"

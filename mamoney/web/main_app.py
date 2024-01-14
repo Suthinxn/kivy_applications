@@ -107,6 +107,23 @@ class Income_expense(Screen):
         sum_ex += int(input_expense)
         self.ids.display_expense.text = str(sum_ex)
 
+sum_save = 0
+
+class Save_money(Screen):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def sum_savemoney(self, input_money):
+        global sum_save
+        sum_save += int(input_money)
+
+    # def sum_savemoney(self, input_goal, input_money):
+    #     sum_save = int(input_money)
+
+    def avg_savemoney(self, input_goal):
+        avg_goal =  sum_save / int(input_goal)
+        self.ids.display_save.text = f"{avg_goal} %"
+
 kv = Builder.load_file("main.kv")
 
 class main(App):
